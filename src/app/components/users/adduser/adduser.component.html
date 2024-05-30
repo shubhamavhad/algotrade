@@ -1,0 +1,72 @@
+<!-- form.component.html -->
+<form class="form-container" [formGroup]="registerForm" (ngSubmit)="addUser()">
+    <h1 class="container-h2">Add User</h1>
+    <div class="row">
+        <div class="column">
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Name" formControlName="name">
+            </mat-form-field>
+        </div>
+        <div class="column">
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Phone No" formControlName="phone">
+            </mat-form-field>
+        </div>
+        <div class="column">
+            <mat-form-field class="full-width">
+                <input matInput type="email" placeholder="Email" formControlName="email">
+            </mat-form-field>
+        </div>
+        <div class="column">
+            <mat-form-field class="full-width">
+                <input matInput type="password" placeholder="Password" formControlName="password">
+            </mat-form-field>
+        </div>
+        <div class="column">
+            <mat-form-field class="full-width">
+                <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPassword">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column">
+            <mat-form-field class="full-width">
+                <mat-label>Organization</mat-label>
+                <mat-select formControlName="orgId">
+                    <mat-option *ngFor="let org of orglist" [value]="org.id">{{ org.OrgName }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="column">
+            <mat-form-field class="full-width">
+                <mat-label>User Role</mat-label>
+                <mat-select formControlName="userRole">
+                    <mat-option *ngFor="let role of userRole" [value]="role._id">{{ role.userRole }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="column">
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Account ID" formControlName="account_id">
+            </mat-form-field>
+        </div>
+        <div class="column">
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Account Password" formControlName="account_passwd">
+            </mat-form-field>
+        </div>
+        <div class="column">
+            <mat-form-field class="full-width">
+                <input matInput placeholder="GT Token" formControlName="gtoken">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row center">
+        <div class="column">
+            <mat-checkbox formControlName="isActive">Is Active</mat-checkbox>
+        </div>
+    </div>
+    <div class="row center">
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+    </div>
+</form>

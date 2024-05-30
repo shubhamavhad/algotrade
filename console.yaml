@@ -1,0 +1,73 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: algotrades
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: console
+  namespace: algotrades
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: console
+      tier: console
+      track: stable
+  template:
+    metadata:
+      labels:
+        app: console
+        tier: console
+        track: stable
+    spec:
+      containers:
+      - name: console
+        image: shubhamksemin/algotradefrontend:ui-latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: console-service
+  namespace: algotrades
+spec:
+  type: ClusterIP
+  selector:
+    app: console
+    tier: console
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: console-ingress
+  namespace: algotrades
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+spec:
+  ingressClassName: public
+  tls:
+  - hosts:
+    - console.algotrades.web.ksemin.in
+    secretName: ksemin-in-tls
+  rules:
+    - host: console.algotrades.web.ksemin.in
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: console-service
+                port:
+                  number: 80

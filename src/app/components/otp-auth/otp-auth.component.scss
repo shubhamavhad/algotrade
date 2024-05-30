@@ -1,0 +1,122 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;  
+  }
+  
+  body{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #DBF4FD;
+  }
+  
+  .form
+  {
+      width:260px;
+      height: 260px;
+      background: #222;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 30px;
+      gap: 20px;
+      position: relative;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      border-radius: 15px;
+  
+  }
+  
+  .title{
+      font-size: 18px;
+      color: #fff;
+      font-weight: 700;
+  
+  }
+  
+  .text{
+      font-size: 12px;
+      color: #fff;
+      line-height: 17px;
+      text-align: center;
+  
+  }
+  .inputContainer-login{
+      width: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+      gap: 13px;
+  }
+  .inputContainer-login input{
+      background: #fff;
+      width: 140px;
+      height: 40px;
+      text-align: center;
+      border: none;
+      outline: none;
+      border-radius: 7px;
+      caret-color: #222;
+      color: #222;
+      font-size: 16px;
+      font-weight: 600;
+  
+  }
+  
+  .inputContainer{
+      width: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+      gap: 13px;
+  
+  }
+  
+  .inputContainer input{
+      background: #fff;
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      border: none;
+      outline: none;
+      border-radius: 7px;
+      caret-color: #222;
+      color: #222;
+      font-size: 16px;
+      font-weight: 600;
+  
+  }
+  
+  .inputContainer input:disabled{
+      background: #e6e6e6;
+      cursor: not-allowed;
+  }
+  
+  .verifyBtn{
+      width: 200px;
+      height: 40px;
+      border: none;
+      background: #7f81ff;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 10px;
+  
+  }
+  
+  .verifyBtn:hover{
+      background: #a1a2fd;
+      transition: 0.3s;
+      
+  }
+  
+  .verifyBtn:disabled{
+      opacity: 0.8;
+      cursor: not-allowed;
+  
+  }

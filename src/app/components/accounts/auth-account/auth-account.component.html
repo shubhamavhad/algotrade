@@ -1,0 +1,11 @@
+<div class="container">
+    <h2 class="container-h2">Account Authentication</h2>
+    <form [formGroup]="accsAuthForm" (ngSubmit)="accsAuth()" class="material-form">
+        <div class="material-form__container">
+            <input class="material-form__input" type="text" formControlName="requestTokenLink" placeholder=" ">
+            <label class="material-form__label" for="orgName">Request Token Link</label>
+            <div class="material-form__focus-animation"></div>
+        </div>
+        <button class="material-form__button" type="submit">Generate Session</button>
+    </form>
+</div>

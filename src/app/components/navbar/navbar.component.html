@@ -1,0 +1,19 @@
+<mat-toolbar color="primary" class="mat-elevation-z8">
+    <span> <mat-icon>eco</mat-icon> White Fortune</span>
+    <div class="spacer"></div>
+    <a mat-button routerLink="dashboard">Dashboard</a>
+    <a mat-button routerLink="copy-trade">Copy Trading</a>
+    <a mat-button routerLink="accounts">Accounts</a>
+    <a mat-button routerLink="organizations">Organization</a>
+    <a mat-button routerLink="users">Users</a>
+    <div class="head-user-avatar-container" (click)="toggleDropdown()">
+        <div class="head-user-avatar">
+            <img src="../../../assets/user.jpg" alt="user" class="user-avatar">
+            <div class="circle-indicator pulse"></div>
+        </div>
+        <div class="dropdown-menu" *ngIf="showDropdown">
+            <a mat-button class="profile-name">{{name}}</a>
+            <a mat-button class="logout-button" (click)="logout()">Logout</a>
+        </div>
+    </div>
+</mat-toolbar>

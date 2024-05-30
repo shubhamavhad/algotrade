@@ -1,0 +1,10 @@
+<div class="container">
+    <h2 class="container-h2">Update Organization</h2>
+    <form [formGroup]="updateOrgForm" (ngSubmit)="updateOrg()" class="material-form">
+       <div class="material-form__container">
+            <input class="material-form__input" type="email" formControlName="OrgadminId" placeholder=" ">
+            <label class="material-form__label" for="OrgadminId">Admin Email</label>
+        </div>
+        <button class="material-form__button" type="submit">Submit</button>
+    </form>
+</div>

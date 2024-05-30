@@ -1,0 +1,131 @@
+.spacer{
+    flex: 1 1 auto;
+}
+// .head-user-avatar-container{
+
+//     margin-left: 20px;
+//     .head-user-avatar{
+//         position: relative;
+//         .user-avatar{
+//             margin-left: -5px;
+//             width: 50px;
+//             height: 10%;
+//             border-radius: 20px;
+//             box-shadow:  0 0 15px rgb(35 35 35 / 15%);
+//             cursor: pointer;
+//             margin-top: 10px;
+//         }
+//     }
+//     .circle-indicator {
+//         width: 8px;
+//         height: 8px;
+//         border-radius: 50%;
+//         border-color: black;
+//         position: relative;
+//         top: -2px;
+//         right: -3px;
+//         // background: #699dfa;
+
+       
+//     }
+// }
+// .dropdown-menu {
+//     position: absolute;
+//     top: 50px;
+//     right: 10px;
+//     background-color: #fff;
+//     border: 1px solid #ccc;
+//     border-radius: 5px;
+//     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+//     z-index: 1;
+//   }
+  
+//   .dropdown-menu a {
+//     display: block;
+//     padding: 10px;
+//     text-decoration: none;
+//     color: #333;
+//   }
+  
+//   .dropdown-menu a:hover {
+//     background-color: #f4f4f4;
+//   }
+.dropdown-menu {
+    position: absolute;
+    top: 60px; /* Adjust the top position to match your navbar height */
+    right: 10px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    min-width: 160px;
+    padding: 8px 0;
+  }
+  
+  .dropdown-menu a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333333;
+    transition: background-color 0.3s ease;
+  }
+  
+  .dropdown-menu a:hover {
+    background-color: #f4f4f4;
+  }
+  
+  .dropdown-menu a:last-child {
+    border-top: 1px solid #dddddd;
+  }
+  
+  .dropdown-menu a:last-child:hover {
+    background-color: #ffffff;
+  }
+  
+  .user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+  
+  .head-user-avatar-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .head-user-avatar {
+    position: relative;
+  }
+  
+  .circle-indicator {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    background-color: rgb(70, 235, 75);
+    border-radius: 50%;
+  }
+  
+  .pulse {
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(0.9);
+      opacity: 0.7;
+    }
+    50% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(0.9);
+      opacity: 0.7;
+    }
+  }

@@ -1,0 +1,133 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+/>
+<!-- 
+<div class="header">
+    <div>
+        <div class="title">Copy Trading</div>
+        <div class="profile-info">
+            {{ adminName }} - DN7238 - zerodhamaster
+            <button class="button disconnect" (click)="disconnect()">Disconnect</button>
+        </div>
+    </div>
+    <div class="buttons">
+        <button class="button-trade">Trading ON/OFF</button>
+        <button class="button-place-order">Place Rejected Order Also</button>
+    </div>
+</div> -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <div class="header">
+        <div class="title">Copy Trading</div>
+        <div class="info-line">
+            <div class="profile-info">
+                <div id="profileData"> {{ adminName }} - DN7238 - zerodhamaster</div>
+                <div class="button disconnect">Disconnect</div>
+            </div>
+            <div class="buttons">
+                <!-- <div class="button toggle">Trading ON / OFF</div> -->
+                <mat-slide-toggle class="button toggle"  [(ngModel)]="isChecked">Trading ON/OFF </mat-slide-toggle>
+
+                <!-- <div class="button place-order">Place Rejected Order Also</div> -->
+                <!-- <mat-slide-toggle class="button place-order" [(ngModel)]="isRejectedOrd">Place Rejected Order Also </mat-slide-toggle> -->
+                
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Child Accounts</h1>
+        <div class="dropdowns">
+            <!-- <form formControlName="" (click)="LinkuserWithAdmin()"> -->
+
+            <select (change)="selectUser($event)" >
+                <option>All Admin</option>
+                <option *ngFor="let admin of adminAccounts" [value]="admin">{{ admin.Name }}</option>
+            </select>
+            <select class='drop-1' [(ngModel)]="selectedUnlinkedUser" (change)="selectUnAssignUser($event)">
+                <option>Select User</option>
+                <option *ngFor="let user of userAccounts" [ngValue]="user">{{ user.Name }}</option>
+              </select>
+              <input type="number" class="container-multi" [(ngModel)]="multiplier" placeholder="Multiplier">
+              <button (click)="connectUser()">Connect</button>
+        <!-- </form> -->
+        </div>
+        <input type="text" class="container-input" placeholder="Search" (keyup)="applyFilter($event)">
+    
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> Id </th>
+                <td mat-cell *matCellDef="let account"> {{account.id}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="brokerInfo">
+                <th mat-header-cell *matHeaderCellDef> Broker - User Id – User </th>
+                <td mat-cell *matCellDef="let account"> {{account.Name}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="margin">
+                <th mat-header-cell *matHeaderCellDef> Margin </th>
+                <td mat-cell *matCellDef="let account"> {{account.margin}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="pnl">
+                <th mat-header-cell *matHeaderCellDef> P&L </th>
+                <td mat-cell *matCellDef="let account"> {{account.pnl}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="poi">
+                <th mat-header-cell *matHeaderCellDef> Poi </th>
+                <td mat-cell *matCellDef="let account"> {{account.poi}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="multiplier">
+                <th mat-header-cell *matHeaderCellDef> Multiplier </th>
+                <td mat-cell *matCellDef="let account"> {{account.multiplier}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="trading">
+                <th mat-header-cell *matHeaderCellDef> Trading </th>
+                <td mat-cell *matCellDef="let account">
+                    <!-- <button mat-button (click)="treading(account.brokerInfo)">Trading</button> -->
+                    <mat-slide-toggle class="button toggle" [(ngModel)]="account.isTrade" (change)="toggleTradeStatus(account)"></mat-slide-toggle>
+                </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="demat">
+                <th mat-header-cell *matHeaderCellDef> Demat </th>
+                <td mat-cell *matCellDef="let account">
+                    <button mat-button>Demat</button>
+                </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="connection">
+                <th mat-header-cell *matHeaderCellDef> Connection </th>
+                <td mat-cell *matCellDef="let account">
+                    <button mat-button>Connection</button>
+                </td>
+            </ng-container>
+    
+
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td mat-cell *matCellDef="let account">
+                    <button mat-button class="deletebutton" (click)="deleteuser(account)">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </td>
+            </ng-container>
+    
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</body>
+
+</html>

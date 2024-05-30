@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;500;600&display=swap');
+
+/* Header styles */
+.header {
+  padding: 10px;
+  box-shadow: 0px 0px 10px 3px rgba(158, 12, 12, 0.2);
+  margin-top: 5%;
+  border-radius: 10px;
+}
+
+.title {
+  font-size: 24px;
+  color: black;
+}
+
+.info-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.profile-info {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.disconnect {
+  background-color: #f00;
+}
+
+.toggle {
+  background-color: white;
+}
+
+.place-order {
+  background-color: white(242, 242, 246);
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* Dropdown styles */
+.dropdowns {
+//   display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.dropdowns select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+  font-size: 16px;
+//   margin-left: 5%;
+}
+.drop-1{
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    font-size: 16px;
+    margin-left: 10%;
+    width: 20%;
+}
+
+/* Connect button styles */
+.dropdowns button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #fff;
+  background-color: #007bff; /* Blue color for connect button */
+  border: none;
+  margin-left: 1%;
+}
+
+/* Container styles */
+.container {
+  width: 98%;
+  padding: 20px;
+  color: #fff;
+//   background-color: #2f3640;
+  font-family: Arial, sans-serif;
+  margin-top: 2%;
+  box-shadow: 0px 0px 10px 3px rgba(158, 12, 12, 0.2);
+  border-radius: 10px;
+}
+.container-input{
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    margin-bottom: 20px; /* Add margin below the search input */
+    width: 30%; /* Make the input field take up full width */
+    box-sizing: border-box; 
+}
+.container-multi{
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  margin-bottom: 20px; /* Add margin below the search input */
+  width: 15%; /* Make the input field take up full width */
+  box-sizing: border-box; 
+}
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 10px;
+  border: 1px solid #fff;
+}
+
+table th {
+  background-color: white;
+}
+
+table tr:nth-child(even) {
+  background-color: white;
+}
+
+table tr:nth-child(odd) {
+  background-color: white;
+}
+
+table button {
+  padding: 5px 10px;
+  color: #333;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.deletebutton{
+  color: #333;
+}

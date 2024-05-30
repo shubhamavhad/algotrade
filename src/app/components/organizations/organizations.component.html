@@ -1,0 +1,71 @@
+ <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+/>
+
+<div class="page-header">
+    <h1>Organization</h1>
+  </div>
+  <div class="page-content">
+    <div class="records table-responsive">
+      <div class="record-header">
+        <div class="add">
+          <button mat-raised-button (click)="Addorg()">Add Organization</button>
+        </div>
+        <div class="browse">
+          <input type="search" placeholder="Search" class="record-search" />
+          <select name="" id="">
+            <option value="">Organization</option>
+            <option value="">Admin-Email</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <!-- SR.NO Column -->
+          <ng-container matColumnDef="srNo">
+            <th mat-header-cell *matHeaderCellDef>SR.NO</th>
+            <td mat-cell *matCellDef="let element">{{ element.srNo }}</td>
+          </ng-container>
+  
+          <!-- USER Column -->
+          <ng-container matColumnDef="Organization_Name">
+            <th mat-header-cell *matHeaderCellDef>Organization-Name</th>
+            <td mat-cell *matCellDef="let element">{{ element.OrgName }}</td>
+          </ng-container>
+  
+          <!-- EMAIL Column -->
+          <ng-container matColumnDef="Admin_Email">
+            <th mat-header-cell *matHeaderCellDef>Admin-Email</th>
+            <td mat-cell *matCellDef="let element">{{ element.OrgadminId }}</td>
+          </ng-container>
+  
+          <!-- PASSWORD Column -->
+          <ng-container matColumnDef="Actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td class="actions" mat-cell *matCellDef="let element">
+              <button class="btn-close btn-large" (click)="updateOrg(element)">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+              <button class="btn-close btn-large" (click)="deleteOrg(element.id)">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </td>
+          </ng-container>
+  
+          <!-- Define Header and Row Definitions -->
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+  
+        <!-- Paginator -->  
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 20]"
+          showFirstLastButtons
+          aria-label="Select page of users"
+        >
+        </mat-paginator>
+      </div>
+    </div>
+  </div>
+  

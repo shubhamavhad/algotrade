@@ -1,0 +1,34 @@
+<div class="container">
+    <h2 class="container-h2">Add Account</h2>
+    <form [formGroup]="addAccountform" (ngSubmit)="addAccount()" class="material-form">
+        <!-- <div class="material-form__container">
+            <input class="material-form__input" type="text" formControlName="user_name" placeholder=" ">
+            <label class="material-form__label" for="orgName">User Name</label>
+            <div class="material-form__focus-animation"></div>
+        </div> -->
+        <div class="material-form__container">
+        <mat-form-field >
+            <mat-label>User name</mat-label>
+            <mat-select formControlName="Name">
+                <mat-option *ngFor="let role of userlist" [value]="role.email">{{role.name}}</mat-option>
+                <!-- <div class="material-form__focus-animation"></div> -->
+            </mat-select>
+        </mat-form-field>
+    </div>
+        <div class="material-form__container">
+            <input class="material-form__input" type="text" formControlName="Account_api" placeholder=" ">
+            <label class="material-form__label" for="orgName">API Key</label>
+            <div class="material-form__focus-animation"></div>
+        </div>
+        <div class="material-form__container">
+            <input class="material-form__input" type="text" formControlName="Account_secret" placeholder=" ">
+            <label class="material-form__label" for="orgAdminId">API Secret</label>
+        </div>
+        <div class="material-form__container">
+            <input class="material-form__input" type="number" formControlName="multiplier" placeholder=" ">
+            <label class="material-form__label" for="orgName">Multiplier</label>
+            <div class="material-form__focus-animation"></div>
+        </div>
+        <button class="material-form__button" type="submit">Submit</button>
+    </form>
+</div>

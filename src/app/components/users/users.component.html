@@ -1,0 +1,94 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+/>
+
+<div class="page-header">
+    <h1>Users</h1>
+    <small>Home / User</small>
+</div>
+<div class="page-content">
+    <div class="records table-responsive">
+        <div class="record-header">
+            <div class="add">
+                <button mat-raised-button *ngIf="checkUserRole==='1' || checkUserRole==='2'" (click)="Adduser()"> Add User</button>
+            </div>
+            <div class="browse">
+                <mat-form-field>
+                    <mat-label>Search</mat-label>
+                    <input matInput (keyup)="applyFilter($event)" placeholder="Enter the Input" #input>
+                  </mat-form-field>
+            </div>
+        </div>
+        <div>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                <!-- SR.NO Column -->
+                <ng-container matColumnDef="srNo">
+                    <th mat-header-cell *matHeaderCellDef> SR.NO </th>
+                    <td mat-cell *matCellDef="let element"> {{element.srNo}} </td>
+                </ng-container>
+
+                <!-- USER Column -->
+                <ng-container matColumnDef="user">
+                    <th mat-header-cell *matHeaderCellDef> USER </th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+
+                <!-- EMAIL Column -->
+                <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef> EMAIL </th>
+                    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                </ng-container>
+
+                <!-- PASSWORD Column -->
+                <!-- <ng-container matColumnDef="password">
+                    <th mat-header-cell *matHeaderCellDef> PASSWORD </th>
+                    <td mat-cell *matCellDef="let element"> {{ element.password}} </td>
+                </ng-container> -->
+
+                <!-- PHONE NO Column -->
+                <ng-container matColumnDef="phoneNo">
+                    <th mat-header-cell *matHeaderCellDef> PHONE NO </th>
+                    <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+                </ng-container>
+                 
+                <!-- status column -->
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef> Status </th>
+                    <td mat-cell *matCellDef="let element"> {{element.isActive}} </td>
+                </ng-container>
+                <ng-container matColumnDef="Userrole">
+                    <th mat-header-cell *matHeaderCellDef> Userrole</th>
+                    <td mat-cell *matCellDef="let element"> {{element.userRole}} </td>
+                </ng-container>
+
+                <!-- ACTIONS Column -->
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef> ACTIONS </th>
+                    <td class="actions" mat-cell *matCellDef="let element">
+                        <button class="btn-close btn-large">
+                            <i class="fa-solid fa-pen-to-square" (click)="updateUser(element)"></i>
+                          </button>
+                          <button class="btn-close btn-large" (click)="deleteUser(element.id)">
+                            <i class="fa-solid fa-trash"></i> 
+                          </button>
+                          <button class="btn-close btn-large">
+                            <i class="fa-solid fa-ban"></i>
+                          </button>
+                      </td>
+                </ng-container>
+
+                <!-- Define Header and Row Definitions -->
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <!-- Paginator -->
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                           showFirstLastButtons
+                           aria-label="Select page of users">
+            </mat-paginator>
+        </div>
+    </div>
+</div>

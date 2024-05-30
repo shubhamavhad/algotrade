@@ -1,0 +1,60 @@
+<mat-card class="registration-form">
+    <mat-card-header>
+      <h1>User Registration</h1>
+    </mat-card-header>
+    <mat-card-content>
+      <form id="registrationForm" class="material-form" [formGroup]="updateForm" (ngSubmit)="updateUser()">
+  
+        <div class="material-form__container">
+          <input class="material-form__input" formControlName="name" type="text" id="name" placeholder=" ">
+          <label class="material-form__label" for="name">Name</label>
+          <div class="material-form__focus-animation"></div>
+        </div>
+        
+        <div class="material-form__container">
+          <input class="material-form__input" formControlName="email" type="email" id="email" placeholder=" ">
+          <label class="material-form__label" for="email">Email</label>
+          <div class="material-form__focus-animation"></div>
+        </div>
+        
+        <div class="material-form__container">
+          <input class="material-form__input" formControlName="phone" type="text" id="phone" placeholder=" ">
+          <label class="material-form__label" for="phone">Phone</label>
+          <div class="material-form__focus-animation"></div>
+        </div>
+        
+        <div class="material-form__container">
+          <input class="material-form__input" formControlName="password" type="password" id="password" placeholder=" ">
+          <label class="material-form__label" for="password">Password</label>
+          <div class="material-form__focus-animation"></div>
+        </div>
+        
+        <div class="material-form__container">
+          <input class="material-form__input" formControlName="confirmPassword" type="password" id="confirmPassword" placeholder=" ">
+          <label class="material-form__label" for="confirmPassword">Confirm Password</label>
+          <div class="material-form__focus-animation"></div>
+        </div>
+        
+  
+        <div class="material-form__container" *ngIf="userRole && userRole.length > 0">
+          <mat-form-field appearance="fill">
+            <mat-select formControlName="userRole" class="org-field">
+              <mat-option [value]="">Select UserRole</mat-option>
+              <mat-option *ngFor="let role of userRole" [value]="role._id">{{role.userRole}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        
+        <div *ngIf="!userRole || userRole.length === 0">
+          Loading Userrole
+        </div>
+          
+        <!-- <div class="material-form__container">
+          <mat-checkbox formControlName="isActive">Is Active</mat-checkbox>
+        </div> -->
+        
+        <button type="submit" mat-raised-button class="material-form__button" color="primary">Update</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  

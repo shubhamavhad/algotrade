@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+  }
+  
+  .left-side {
+    flex: 1;
+    background-color: lightblue;
+    padding: 20px;
+    width:5%;
+  }
+  
+  .right-side {
+    flex: 2;
+    // background-color: lightgreen;
+    border: 0.2rem solid;
+    // padding: 20px;
+  }
+  
+  .spacer{
+    flex: 1 1 auto;
+}
