@@ -1,0 +1,107 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stds-msbteoexam-1-deployment
+  namespace: msbteoexam-1
+spec:
+  selector:
+    matchLabels:
+      app: stds-msbteoexam-1
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: stds-msbteoexam-1
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: "eks.amazonaws.com/nodegroup"
+                operator: In
+                values: ["workers-msbteoexam"]
+      containers:
+      - name: pods-examw22-deployment
+        image: 056121157689.dkr.ecr.ap-south-1.amazonaws.com/bynaricexamstudent:latest
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "7Gi"
+            cpu: "3000m"
+          limits:
+            memory: "7.5Gi"
+            cpu: "3500m"
+        volumeMounts:
+        - name: tkiet-production-data
+          mountPath: "/www/public/data"
+        env:
+        - name: PROVISIONER_NAME
+          value: efs-storage
+        - name: NFS_SERVER
+          value: 192.168.224.128
+        - name: NFS_PATH
+          value: /T01folder
+      volumes:
+      - name: tkiet-production-data
+        nfs:
+          server: 192.168.224.128
+          path: /
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: stds-msbteoexam-1-service
+  namespace: msbteoexam-1
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:ap-south-1:056121157689:certificate/a4b1a42e-d2d2-4eb5-ad9c-8b052e8a587f
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
+    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
+spec:
+  selector:
+    app: stds-msbteoexam-1
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    name: https
+    port: 443
+    targetPort: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: stds-msbteoexam-1-ingress
+  namespace: msbteoexam-1
+  annotations:
+    kubernetes.io/ingress.class: alb
+spec:
+  tls:
+  - secretName: stds-msbteoexam-1-in-tls
+    hosts:
+    - stds24.msbteoexam-1.com
+  rules:
+  - host: stds24.msbteoexam-1.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: stds-msbteoexam-1-service
+            port:
+              number: 443
+        path: /
+        pathType: Prefix
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: stds-msbteoexam-1-hpa
+  namespace: msbteoexam-1
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: stds-msbteoexam-1-deployment
+  minReplicas: 1
+  maxReplicas: 1000
+  targetCPUUtilizationPercentage: 70

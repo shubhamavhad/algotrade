@@ -1,0 +1,9 @@
+bcrypt
+Flask
+kiteconnect
+twilio
+Flask-PyMongo
+flask-cors
+Flask-JWT-Extended
+pymongo
+pycryptodome

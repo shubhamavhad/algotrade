@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Access Granted</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="../static/images/icons/favicon.ico"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/vendor/bootstrap/css/bootstrap.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/vendor/animate/animate.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/vendor/css-hamburgers/hamburgers.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/vendor/select2/select2.min.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../static/css/util.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css" />
+    <!--======================================================================-->
+    <style>
+      /* CSS styles for the access token paragraph */
+      #accessToken {
+        max-width: 400px; /* Adjust the maximum width as needed */
+        overflow-wrap: break-word; /* Wrap long words */
+        border: 1px solid #ccc; /* Add a border for better visibility */
+        padding: 10px; /* Add padding for spacing */
+        border-radius: 5px; /* Add border radius for rounded corners */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="limiter">
+      <div class="container-login100">
+        <div class="wrap-login100">
+          <div class="login100-pic js-tilt" data-tilt>
+            <img src="../static/images/img-01.png" alt="IMG" />
+          </div>
+          <div class="login100-form">
+            <h1>Access Token:</h1>
+            <p id="accessToken">{{ access_token }}</p>
+            <div class="container-login100-form-btn"><button class="login100-form-btn" onclick="copyAccessToken()">
+                Copy Token
+              </button></div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Your script tags and other HTML content here -->
+
+    <script>
+      function copyAccessToken() {
+        // Select the text inside the <p> tag
+        var accessToken = document.getElementById("accessToken");
+        var range = document.createRange();
+        range.selectNode(accessToken);
+        window.getSelection().removeAllRanges(); // Clear previous selection
+        window.getSelection().addRange(range); // Select the text
+        document.execCommand("copy"); // Copy the selected text
+        window.getSelection().removeAllRanges(); // Clear the selection after copying
+        alert("Access token copied!");
+      }
+    </script>
+  </body>
+</html>
